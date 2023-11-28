@@ -14,9 +14,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/login', [MyUserController::class, 'login_get']);
-Route::post('/login', [MyUserController::class, 'login_post']);
+Route::get('/', [MyUserController::class, 'login_get']);
+Route::post('/', [MyUserController::class, 'login_post']);
