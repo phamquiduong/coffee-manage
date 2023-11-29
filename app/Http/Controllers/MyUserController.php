@@ -49,7 +49,7 @@ class MyUserController extends Controller
             }
 
             // Check password for user
-            if (md5($password) != $user->password) return view('login', $context + ['error' => 'password mismatch']);
+            if (md5($password) != $user->password) return view('login', $context + ['requestPassword' => true, 'error' => 'password mismatch']);
 
             // Return page for owner or satff user
             if ($user->role == 'owner') return response(view('owner.index'))->cookie('phone_number', $phone_number);
