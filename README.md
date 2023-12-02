@@ -26,6 +26,13 @@ cp .env.example .env
 ```
 
 
+### Migrate database 
+> Run this command.
+```bash
+php artisan migrate
+```
+
+
 ### Run server
 > Run this command.
 ```bash
