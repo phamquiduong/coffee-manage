@@ -11,9 +11,9 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create("orders", function (Blueprint $table) {
-            $table->increments('id')->primary;
-            $table->string("user_phone_number");
-            $table->integer("food_id");
+            $table->bigIncrements('id')->primary;
+            $table->string("user_phone_number", 12);
+            $table->unsignedBigInteger("food_id");
             $table->string("number");
             $table->string("money");
             $table->boolean('is_processing')->default(true) ;
@@ -29,6 +29,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('oders');
+        Schema::dropIfExists('orders');
     }
 };
