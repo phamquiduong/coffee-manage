@@ -16,3 +16,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [MyUserController::class, 'login_get']);
 Route::post('/', [MyUserController::class, 'login_post']);
+
+Route::get('/logout', function () {
+    return redirect('/')->withCookie(Cookie::forget('phone_number'));
+
+});
+
