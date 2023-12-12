@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create("foods_groups", function (Blueprint $table) {
             $table->increments('id')->primary;
             $table->string("name");
-
     });
 }
 

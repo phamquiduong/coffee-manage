@@ -15,7 +15,7 @@
 ### Install Laravel Framework
 > Run this command.
 ```bash
-composer install --no-cache
+composer install
 ```
 
 

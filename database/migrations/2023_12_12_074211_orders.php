@@ -12,14 +12,14 @@ return new class extends Migration {
     {
         Schema::create("orders", function (Blueprint $table) {
             $table->increments('id')->primary;
-            $table->string("user");
-            $table->increments("food_id");
+            $table->string("user_phone_number");
+            $table->integer("food_id");
             $table->string("number");
             $table->string("money");
             $table->boolean('is_processing')->default(true) ;
             $table->timestamps();
 
-            $table->foreign('user')->references('phone_number')->on('my_users');
+            $table->foreign('user_phone_number')->references('phone_number')->on('my_users');
             $table->foreign('food_id')->references('id')->on('foods');
         });
     }

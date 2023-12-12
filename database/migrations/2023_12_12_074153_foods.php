@@ -14,13 +14,11 @@ return new class extends Migration
         Schema::create("foods", function (Blueprint $table) {
             $table->increments('id')->primary;
             $table->string('name',255);
-            $table->increments('group_id');
+            $table->integer('group_id');
             $table->string('money',255);
             $table->boolean('is_active')->default(false);
-            $table->string('how_to_make',255);
-
+            $table->text('how_to_make');
             $table->foreign('group_id')->references('id')->on('foods_groups');
-
     });
 }
 
