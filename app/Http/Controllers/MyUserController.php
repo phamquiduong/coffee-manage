@@ -56,7 +56,7 @@ class MyUserController extends Controller
             return response(view('staff.index'))->cookie('phone_number', $phone_number);
         } else {
             if (isset($user)) {
-                if ($user->role == 'guest') return view('guest.index');
+                if ($user->role == 'guest') return response(view('guest.index'))->cookie('phone_number', $phone_number);
                 else return view('login', $context + ['requestPassword' => true]);
             } else {
                 if ($isFirstUser) return view('login', $context + ['requestPassword' => true]);
