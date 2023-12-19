@@ -14,7 +14,10 @@ class FoodController extends Controller
      */
     public function index()
     {
-        return view('owner.foods', ['foods' => Food::all()->sortByDesc('is_active')]);
+        return view('owner.foods-manager', [
+            'foods' => Food::all()->sortByDesc('is_active'),
+            'food_groups' => FoodGroup::all()
+        ]);
     }
 
     /**
@@ -25,14 +28,17 @@ class FoodController extends Controller
         $request->validate([
             'name' => ['required',],
             'money' => ['required'],
+            'food_group' => ['required'],
         ]);
         $name = $request->name;
         $money = $request->money;
+        $food_group = $request->food_group;
 
         Food::create([
             'name' => $name,
             'money' => $money,
             'is_active' => true,
+            'group_id' => $food_group
         ]);
 
         return redirect('/foods');
@@ -67,7 +73,23 @@ class FoodController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'name' => ['required'],
+            'money' => ['required'],
+            'food_group' => ['required'],
+        ]);
+        $name = $request->name;
+        $money = $request->money;
+        $is_active = isset($request->is_active);
+        $food_group = $request->food_group;
+
+        Food::where('id', '=', $id)->update([
+            'name' => $name,
+            'money' => $money,
+            'is_active' => $is_active,
+            'group_id' => $food_group
+        ]);
+        return redirect('/foods');
     }
 
     /**
@@ -75,6 +97,7 @@ class FoodController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Food::where('id', '=', $id)->delete();
+        return redirect('/foods');
     }
 }

@@ -19,44 +19,61 @@ Owner page
 
 <form method="POST">
     @csrf
-    <input type="tel" pattern="^(\+84|0)\d{9}$" name="phone_number" id="phone number" placeholder="Input phone number" required>
-    <input type="text" name="full_name" id="full_name" placeholder="Input your name" required>
-    <input type="password" name="password" id="password" placeholder="Input password" required>
-    <button type="submit">Add user</button>
+    <input type="text" name="name" id="name" placeholder="Input name" required>
+    <input type="number" name="money" id="money" placeholder="Input money" required>
+    <select name="food_group">
+        @foreach($food_groups as $food_group)
+        <option value="{{$food_group->id}}">{{$food_group->name}}</option>
+        @endforeach
+    </select>
+    <button type="submit">Add Food </button>
 </form>
+
+
+
 <table class="table">
     <thead>
-        <th>Số điện thoại</th>
-        <th>Họ và tên</th>
-        <th>Chỉnh sửa</th>
-        <th>Xóa nhân viên</th>
+        <th>Tên món </th>
+        <th>Giá </th>
+        <th>Trạng thái </th>
+        <th>Loại </th>
+        <th>Sửa</th>
+        <th>Xóa</th>
     </thead>
     <tbody>
-        @foreach ($users as $user)
+        @foreach ($foods as $food)
         <tr>
-            <td> {{ $user->phone_number }} </td>
-            <td> {{ $user->full_name }}</td>
+            <td> {{ $food->name }} </td>
+            <td> {{ $food->money }} </td>
+            <td> {{ $food->is_active }} </td>
+            <td> {{ $food->group->name }} </td>
             <td>
                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#update_{{ $user->phone_number }}">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#update_{{ $food->id }}">
                     Cập nhật
                 </button>
 
                 <!-- Modal -->
-                <div class="modal fade" id="update_{{ $user->phone_number }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" id="update_{{ $food->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="exampleModalLabel">Cập nhật nhân viên</h1>
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Cập nhật món</h1>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
 
-                            <form method="POST" action="/users/{{ $user->phone_number }}">
+                            <form method="POST" action="/foods/{{ $food->id }}">
                                 <div class="modal-body">
                                     @csrf
                                     @method('PATCH')
-                                    <input type="tel" pattern="^(\+84|0)\d{9}$" placeholder="Số điện thoại mới" value="{{ $user->phone_number }}" name="phone_number" required>
-                                    <input type="text" placeholder="Tên mới" value="{{ $user->full_name }}" name="full_name" required>
+                                    <input type="text" placeholder="Tên mới" value="{{ $food->name }}" name="name" required>
+                                    <input type="number" value="{{ $food->money }}" name="money" id="money" placeholder="Input money" required>
+                                    <input type="checkbox" @if ($food->is_active) checked @endif name="is_active">
+                                    <select name="food_group">
+                                        @foreach($food_groups as $food_group)
+                                        <option value="{{$food_group->id}}" {{$food_group->id == $food->group_id ? 'selected' : ''}}>{{$food_group->name}}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
@@ -69,20 +86,20 @@ Owner page
             </td>
             <td>
                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete_{{ $user->phone_number }}">
+                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete_{{ $food->id }}">
                     Xóa
                 </button>
 
                 <!-- Modal -->
-                <div class="modal fade" id="delete_{{ $user->phone_number }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" id="delete_{{ $food->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="exampleModalLabel">Xóa nhân viên {{ $user->full_name? $user->full_name : $user->phone_number }}</h1>
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Xóa món {{ $food->name }}</h1>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
 
-                            <form method="POST" action="/users/{{ $user->phone_number }}">
+                            <form method="POST" action="/foods/{{ $food->id }}">
                                 @csrf
                                 @method('DELETE')
                                 <div class="modal-footer">

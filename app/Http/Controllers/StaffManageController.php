@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Models\MyUser;
 use App\Rules\PhoneNumber;
 use Illuminate\Http\Request;
-use App\Models\StaffManage;
 
 class StaffManageController extends Controller
 {
@@ -78,11 +77,12 @@ class StaffManageController extends Controller
             ['phone_number' => str_replace(' ', '', str_replace('+84', '0', $request->phone_number))]
         );
         $request->validate([
-            'phone_number' => ['required', 'unique:my_users,phone_number', new PhoneNumber],
-            'full_name' => ['required',],
+            'phone_number' => ['required', new PhoneNumber],
+            'full_name' => ['required']
         ]);
         $phone_number = $request->phone_number;
         $full_name = $request->full_name;
+
 
         MyUser::where('phone_number', '=', $id)->update([
             'phone_number' => $phone_number,

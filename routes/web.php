@@ -4,6 +4,7 @@ use App\Http\Controllers\FoodController;
 use App\Http\Controllers\FoodGroupController;
 use App\Http\Controllers\FoodManageController;
 use App\Http\Controllers\MyUserController;
+use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\StaffManageController;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Route;
@@ -40,3 +41,8 @@ Route::get('/foods', [FoodController::class, 'index']);
 Route::post('/foods', [FoodController::class, 'create']);
 Route::delete('foods/{id}', [FoodController::class, 'destroy']);
 Route::patch('foods/{id}', [FoodController::class, 'update']);
+
+Route::get('/orders', [OrdersController::class, 'index']);
+Route::post('/orders', [OrdersController::class, 'create']);
+Route::delete('orders/{id}', [OrdersController::class, 'destroy']);
+Route::patch('orders/{id}', [OrdersController::class, 'update']);
