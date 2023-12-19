@@ -30,6 +30,9 @@ class MyUserController extends Controller
 
     function login_post(Request $request)
     {
+        $request->merge(
+            ['phone_number' => str_replace(' ', '', str_replace('+84', '0', $request->phone_number))]
+        );
         $request->validate([
             'phone_number' => ['required', new PhoneNumber],
         ]);
