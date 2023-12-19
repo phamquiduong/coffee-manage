@@ -5,7 +5,8 @@
 @endsection
 
 @section('body')
-    <a href='/logout'>Logout</a>
+@include('owner.layouts.navigation')
+    
 @endsection
 
 @section('style')
