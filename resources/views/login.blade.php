@@ -13,7 +13,7 @@ Login page
         </h4>
         @csrf
         <div class="input-group mt-5 {{ isset($requestPassword) && $requestPassword ? 'd-none' : '' }}" style="animation: fade-right 0.75s ease">
-            <input class="form-control" type="text" placeholder="Số điện thoại" name="phone_number" value="{{ isset($phoneNumber) ? $phoneNumber : '' }}">
+            <input class="form-control" type="tel" pattern="^(\+84|0)\d{9}$" placeholder="Số điện thoại" name="phone_number" value="{{ isset($phoneNumber) ? $phoneNumber : '' }}">
             <button class="btn btn-outline-primary" type="submit"><i class="fa-solid fa-arrow-right"></i></button>
         </div>
         <div class="input-group mt-5 {{ isset($requestPassword) && $requestPassword ? '' : 'd-none' }}" style="animation: fade-right 0.75s ease">

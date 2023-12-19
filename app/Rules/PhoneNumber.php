@@ -14,7 +14,7 @@ class PhoneNumber implements ValidationRule
      */
     public function validate(string $attribute, mixed $value, Closure $fail): void
     {
-        if (!preg_match('/^[+84|0]+\d{9}$/', $value)) {
+        if (!preg_match('/^(\+84|0)\d{9}$/', $value)) {
             $fail('Số điện thoại không đúng định dạng');
         }
     }

@@ -8,7 +8,7 @@ Owner page
 @include('owner.layouts.navigation')
 <form method="POST">
     @csrf
-    <input type="text" name="phone_number" id="phone number" placeholder="Input phone number" required>
+    <input type="tel" pattern="^(\+84|0)\d{9}$" name="phone_number" id="phone number" placeholder="Input phone number" required>
     <input type="text" name="full_name" id="full_name" placeholder="Input your name" required>
     <input type="password" name="password" id="password" placeholder="Input password" required>
     <button type="submit">Add user</button>
@@ -44,7 +44,7 @@ Owner page
                                 <div class="modal-body">
                                     @csrf
                                     @method('PATCH')
-                                    <input type="text" placeholder="Số điện thoại mới" value="{{ $user->phone_number }}" name="phone_number" required>
+                                    <input type="tel" pattern="^(\+84|0)\d{9}$" placeholder="Số điện thoại mới" value="{{ $user->phone_number }}" name="phone_number" required>
                                     <input type="text" placeholder="Tên mới" value="{{ $user->full_name }}" name="full_name" required>
                                 </div>
                                 <div class="modal-footer">
