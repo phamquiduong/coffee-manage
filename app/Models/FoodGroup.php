@@ -15,6 +15,6 @@ class FoodGroup extends Model
 
     public function foods(): HasMany
     {
-        return $this->hasMany(Food::class);
+        return $this->hasMany(Food::class, 'group_id');
     }
 }
