@@ -1,12 +1,12 @@
 @extends('layouts.base')
 
 @section('title')
-    Owner page
+Owner page
 @endsection
 
 @section('body')
-@include('owner.layouts.navigation')
-    
+@include('owner.layouts.navigation', ['page'=>'home'])
+
 @endsection
 
 @section('style')

@@ -5,7 +5,7 @@ Owner page
 @endsection
 
 @section('body')
-@include('owner.layouts.navigation')
+@include('owner.layouts.navigation', ['page'=>'foods'])
 
 @if ($errors->any())
 <div class="alert alert-danger mt-2">

@@ -5,7 +5,7 @@ Owner page
 @endsection
 
 @section('body')
-@include('owner.layouts.navigation')
+@include('owner.layouts.navigation', ['page'=>'foods'])
 <form method="POST">
     @csrf
     <input type="text" name="name" id="name" placeholder="Input your name" required>
