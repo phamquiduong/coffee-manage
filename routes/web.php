@@ -1,8 +1,8 @@
 <?php
 
 use App\Http\Controllers\MyUserController;
-use App\Http\Controllers\Staff;
 use App\Http\Controllers\StaffManageController;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,6 +25,5 @@ Route::get('/logout', function () {
 
 Route::get('/users', [StaffManageController::class, 'index']);
 Route::post('/users', [StaffManageController::class, 'create']);
-Route::delete('/users/{id,full_name}', [StaffManageController::class, 'destroy']);
-Route::patch('/users/{id}', [StaffManageController::class, 'update'] );
-
+Route::delete('/users/{id}', [StaffManageController::class, 'destroy']);
+Route::patch('/users/{id}', [StaffManageController::class, 'update']);
