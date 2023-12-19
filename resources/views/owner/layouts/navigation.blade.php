@@ -5,22 +5,22 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 nav nav-pills">
-                <li class="nav-item me-3">
+                <li class="nav-item me-4">
                     <a class="nav-link @if($page=='home')active text-white @endif" href='/'>
                         Trang chủ <i class="fa-solid fa-house"></i>
                     </a>
                 </li>
-                <li class="nav-item me-3">
+                <li class="nav-item me-4">
                     <a class="nav-link @if($page=='staffs')active text-white @endif" href='/users'>
                         Quản lý nhân viên <i class="fa-solid fa-users"></i>
                     </a>
                 </li>
-                <li class="nav-item me-3">
+                <li class="nav-item me-4">
                     <a class="nav-link @if($page=='foods')active text-white @endif" href='/foods'>
                         Quản lý món ăn <i class="fa-solid fa-bowl-food"></i>
                     </a>
                 </li>
-                <li class="nav-item me-3">
+                <li class="nav-item me-4">
                     <a class="nav-link @if($page=='orders')active text-white @endif" href='/orders'>
                         Xem hóa đơn <i class="fa-solid fa-square-poll-vertical"></i>
                     </a>

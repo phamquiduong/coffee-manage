@@ -147,6 +147,21 @@ Owner page
     .input-group-text {
         width: 120px;
     }
+
+    @keyframes fade-down {
+        from {
+            opacity: 0.55;
+            transform: translateY(5px);
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+
+    td {
+        animation: fade-down 0.25s ease;
+    }
 </style>
 @endsection
 
