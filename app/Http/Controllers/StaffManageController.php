@@ -23,6 +23,9 @@ class StaffManageController extends Controller
      */
     public function create(Request $request)
     {
+        $request->merge(
+            ['phone_number' => str_replace(' ', '', str_replace('+84', '0', $request->phone_number))]
+        );
         $request->validate([
             'phone_number' => ['required', 'unique:my_users,phone_number', new PhoneNumber],
             'full_name' => ['required',],
