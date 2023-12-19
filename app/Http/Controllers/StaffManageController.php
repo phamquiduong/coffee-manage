@@ -71,17 +71,26 @@ class StaffManageController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'phone_number' => ['required', new PhoneNumber],
+            'full_name' => ['required',],
+        ]);
+        $phone_number = $request->phone_number;
+        $full_name = $request->full_name;
+
+        MyUser::where('phone_number', '=', $id)->update([
+            'phone_number' => $phone_number,
+            'full_name' => $full_name
+        ]);
+        return redirect('/users');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id, string $full_name)
+    public function destroy(string $id)
     {
-        MyUser::where('phone_number', '=', $id)
-       -> where('full_name','=', $full_name)
-        ->delete();
+        MyUser::where('phone_number', '=', $id)->delete();
         return redirect('/users');
     }
 }
