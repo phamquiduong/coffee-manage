@@ -7,6 +7,8 @@ Owner page
 @section('body')
 @include('owner.layouts.navigation', ['page'=>'foods'])
 
+
+
 @if ($errors->any())
 <div class="alert alert-danger mt-2">
     <ul>
@@ -28,8 +30,6 @@ Owner page
     </select>
     <button type="submit">Add Food </button>
 </form>
-
-
 
 <table class="table">
     <thead>
