@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class FoodGroup extends Model
 {
     use HasFactory;
+    protected $table = 'foods_groups';
+    protected $fillable = ['name'];
+    public $timestamps = false;
 }

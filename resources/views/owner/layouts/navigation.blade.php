@@ -1,6 +1,8 @@
 <a href='/'>Home</a>
 <a href='/users'>Staff</a>
 <a href='/foods'>Food</a>
+<a href='/foods_groups'>Food-Group</a>
+
 <a href='/orders'>Order</a>
 <a href='/logout'>Logout</a>
 <style>
