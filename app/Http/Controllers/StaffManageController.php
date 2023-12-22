@@ -9,11 +9,18 @@ use Illuminate\Http\Request;
 
 class StaffManageController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
+        $account = $request->cookie('phone_number');
+        if (isset($account)) {
+            $user = MyUser::where('phone_number', $account)->first();
+            if ($user->role != 'owner') return redirect('/');
+        }
+
         return view('owner.staffmanage', ['users' => MyUser::all()->where('role', '=', 'staff')->sortByDesc('id')]);
     }
 
