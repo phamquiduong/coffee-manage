@@ -7,7 +7,7 @@ Owner page
 @section('body')
 @include('owner.layouts.navigation', ['page'=>'staffs'])
 
-<div class="container">
+<div class="container bg-body">
     @if ($errors->any())
     <div class="alert alert-danger mt-2">
         <ul>
@@ -19,7 +19,7 @@ Owner page
     @endif
 </div>
 
-<div class="container">
+<div class="container bg-body">
     <!-- Button trigger modal -->
     <button type="button" class="btn btn-primary mt-4 mb-4 float-end me-4" data-bs-toggle="modal" data-bs-target="#exampleModal">
         Thêm nhân viên mới <i class="fa-solid fa-user-plus"></i>
@@ -59,7 +59,7 @@ Owner page
     </div>
 </div>
 
-<div class="container">
+<div class="container bg-body">
     <table class="table table-hover">
         <thead>
             <th>Số điện thoại</th>

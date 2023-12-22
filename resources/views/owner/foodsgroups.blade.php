@@ -7,7 +7,7 @@ Owner page
 @section('body')
 @include('owner.layouts.navigation', ['page'=>'foods'])
 
-<div class="container ps-5 pe-5 pb-4">
+<div class="container bg-body ps-5 pe-5 pb-4">
     <a class="btn btn-secondary float-end mt-4 mb-4 me-4" href="/foods">
         <i class="fa-solid fa-backward"></i> Danh sách món ăn
     </a>
@@ -23,7 +23,7 @@ Owner page
     </form>
 </div>
 
-<div class="container">
+<div class="container bg-body">
     <table class="table table-hover">
         <thead>
             <th>Tên nhóm </th>

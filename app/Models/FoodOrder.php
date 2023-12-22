@@ -4,11 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Food;
 
-class Order extends Model
+class FoodOrder extends Model
 {
     use HasFactory;
-    protected $fillable = ['money'];
+    protected $table = 'food_order';
+    protected $fillable = ['food_id', 'order_id', 'quantity'];
     public $timestamps = true;
 }

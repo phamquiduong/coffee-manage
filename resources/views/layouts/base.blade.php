@@ -18,7 +18,7 @@
     @yield('style')
 </head>
 
-<body>
+<body class="bg-light">
     @yield('body')
 </body>
 
