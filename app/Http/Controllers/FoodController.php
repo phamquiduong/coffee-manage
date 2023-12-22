@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Food;
 use App\Models\FoodGroup;
+use App\Models\MyUser;
 use Illuminate\Http\Request;
 
 class FoodController extends Controller
@@ -12,8 +13,14 @@ class FoodController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
+        $account = $request->cookie('phone_number');
+        if (isset($account)) {
+            $user = MyUser::where('phone_number', $account)->first();
+            if ($user->role != 'owner') return redirect('/');
+        }
+
         return view('owner.foods-manager', [
             'foods' => Food::all()->sortByDesc('is_active'),
             'food_groups' => FoodGroup::all()

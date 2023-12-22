@@ -5,14 +5,23 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\FoodGroup;
 use Illuminate\Http\Request;
+use App\Models\MyUser;
+
 
 class FoodGroupController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
+        $account = $request->cookie('phone_number');
+        if (isset($account)) {
+            $user = MyUser::where('phone_number', $account)->first();
+            if ($user->role != 'owner') return redirect('/');
+           
+        }
+
         return view('owner.foodsgroups',['foodgroups' => FoodGroup::all()->sortByDesc('id')]);
 
     }
