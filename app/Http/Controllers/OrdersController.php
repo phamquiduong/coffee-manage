@@ -8,6 +8,7 @@ use App\Models\FoodGroup;
 use Illuminate\Http\Request;
 use App\Models\MyUser;
 use App\Models\Order;
+use Illuminate\Support\Facades\DB;
 
 class OrdersController extends Controller
 {
@@ -21,54 +22,28 @@ class OrdersController extends Controller
             $user = MyUser::where('phone_number', $account)->first();
             if ($user->role != 'owner') return redirect('/');
         }
-        
-        return view('owner.orders');
+        $orders = Order::orderBy('created_at', 'ASC')->get();
+        return view('owner.orders', compact('orders'));
     }
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function statistics_by_month(Request $request)
     {
-        //
+        $monthlyStats = DB::select('SELECT
+        MONTH(created_at) AS month,
+        YEAR(created_at) AS year,SUM(money) AS total_money
+        FROM orders
+        WHERE is_processing = 0
+        GROUP BY year, month
+        ORDER BY year, month;');
+        return view('owner.statistics_by_month', compact('monthlyStats'));
     }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    public function statistics_by_year(Request $request)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        $annualStats = DB::select('SELECT
+        YEAR(created_at) AS year,
+        SUM(money) AS total_money
+        FROM orders
+        GROUP BY year
+        ORDER BY year ASC;');
+        return view('owner.statistics_by_year', compact('annualStats'));
     }
 }

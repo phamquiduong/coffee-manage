@@ -11,42 +11,33 @@ Owner page
         <a class="nav-link" aria-current="page" href="/">Trang chủ</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link active" href="/orders">Danh sách</a>
+        <a class="nav-link " href="/orders">Danh sách</a>
     </li>
     <li class="nav-item">
         <a class="nav-link" href="/orders/statistics_by_month">Thống kê theo tháng</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="/orders/statistics_by_year">Thống kê theo năm</a>
+        <a class="nav-link active" href="/orders/statistics_by_year">Thống kê theo năm</a>
     </li>
 </ul>
 
-<h1>Danh sách đơn hàng</h1>
-@if($orders->isEmpty())
-<p>Không có đơn hàng nào.</p>
-@else
+<h1>Thống kê doanh thu theo năm</h1>
 <table class="table table-hover">
     <thead>
         <tr>
-            <th>Money</th>
-            <th>Is Processing</th>
-            <th>Created At</th>
-            <th>Updated At</th>
+            <th>Năm</th>
+            <th>Tổng doanh thu</th>
         </tr>
     </thead>
     <tbody>
-        @foreach($orders as $order)
+        @foreach($annualStats as $stat)
         <tr>
-            <td>{{ $order->money }} VNĐ</td>
-            <td>{{ $order->is_processing }}</td>
-            <td>{{ $order->created_at }}</td>
-            <td>{{ $order->updated_at }}</td>
+            <td>{{ $stat->year }}</td>
+            <td>{{ $stat->total_money }} VNĐ</td>
         </tr>
         @endforeach
     </tbody>
 </table>
-@endif
-
 @endsection
 
 @section('style')
@@ -54,4 +45,5 @@ Owner page
 @endsection
 
 @section('script')
+
 @endsection

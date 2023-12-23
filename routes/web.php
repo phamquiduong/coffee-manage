@@ -44,9 +44,8 @@ Route::delete('foods/{id}', [FoodController::class, 'destroy']);
 Route::patch('foods/{id}', [FoodController::class, 'update']);
 
 Route::get('/orders', [OrdersController::class, 'index']);
-Route::post('/orders', [OrdersController::class, 'create']);
-Route::delete('orders/{id}', [OrdersController::class, 'destroy']);
-Route::patch('orders/{id}', [OrdersController::class, 'update']);
+Route::get('/orders/statistics_by_month', [OrdersController::class, 'statistics_by_month']);
+Route::get('/orders/statistics_by_year', [OrdersController::class, 'statistics_by_year']);
 
 Route::get('staff/order', [StaffController::class, 'order_food']);
 Route::post('staff/order', [StaffController::class, 'ordering']);
