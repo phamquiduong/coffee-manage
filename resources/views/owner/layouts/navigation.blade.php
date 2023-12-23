@@ -22,7 +22,7 @@
                 </li>
                 <li class="nav-item me-4">
                     <a class="nav-link @if($page=='orders')active text-white @endif" href='/orders'>
-                        Xem hóa đơn <i class="fa-solid fa-square-poll-vertical"></i>
+                        Thống kê <i class="fa-solid fa-square-poll-vertical"></i>
                     </a>
                 </li>
             </ul>
