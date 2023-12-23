@@ -22,10 +22,10 @@ Owner page
 <div class="container bg-body">
     <!-- Button trigger modal -->
     <button type="button" class="btn btn-primary mt-4 mb-4 float-end me-4" data-bs-toggle="modal" data-bs-target="#exampleModal">
-        Thêm món ăn mới
+        Thêm món  mới
     </button>
     <a class="btn btn-secondary float-end mt-4 mb-4 me-4" href="/foods_groups">
-        Loại món ăn <i class="fa-solid fa-forward"></i>
+        Loại món  <i class="fa-solid fa-forward"></i>
     </a>
 </div>
 
@@ -34,14 +34,14 @@ Owner page
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Thêm món mới</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <form method="POST">
                 <div class="modal-body">
                     @csrf
                     <div class="input-group mb-3">
-                        <span class="input-group-text" id="basic-addon1">Tên món ăn</span>
+                        <span class="input-group-text" id="basic-addon1">Tên món mới</span>
                         <input type="text" name="name" class="form-control text-center" required>
                     </div>
                     <div class="input-group mb-3">
@@ -49,7 +49,7 @@ Owner page
                         <input type="number" name="money" class="form-control text-center" required>
                     </div>
                     <div class="input-group mb-3">
-                        <span class="input-group-text" id="basic-addon1">Loại món ăn</span>
+                        <span class="input-group-text" id="basic-addon1">Loại món </span>
                         <select name="food_group" class="form-select text-center">
                             @foreach($food_groups as $food_group)
                             <option value="{{$food_group->id}}">{{$food_group->name}}</option>
@@ -59,7 +59,7 @@ Owner page
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Thêm món ăn mới</button>
+                    <button type="submit" class="btn btn-primary">Thêm món mới</button>
                 </div>
             </form>
         </div>
@@ -72,7 +72,7 @@ Owner page
             <th>Tên món </th>
             <th>Giá</th>
             <th class="text-center">Bật?</th>
-            <th>Loại món ăn</th>
+            <th>Loại món </th>
             <th style="width:90px"></th>
             <th style="width:90px"></th>
         </thead>
@@ -105,7 +105,7 @@ Owner page
                                         @csrf
                                         @method('PATCH')
                                         <div class="input-group mb-3">
-                                            <span class="input-group-text" id="basic-addon1">Tên món ăn</span>
+                                            <span class="input-group-text" id="basic-addon1">Tên món </span>
                                             <input type="text" name="name" class="form-control text-center" value="{{ $food->name }}" required>
                                         </div>
                                         <div class="input-group mb-3">
@@ -117,7 +117,7 @@ Owner page
                                             <label class="form-check-label" for="flexSwitchCheckDefault">Có hoạt động không?</label>
                                         </div>
                                         <div class="input-group mb-3">
-                                            <span class="input-group-text" id="basic-addon1">Loại món ăn</span>
+                                            <span class="input-group-text" id="basic-addon1">Loại món </span>
                                             <select name="food_group" class="form-select text-center">
                                                 @foreach($food_groups as $food_group)
                                                 <option value="{{$food_group->id}}" {{$food_group->id == $food->group_id ? 'selected' : ''}}>{{$food_group->name}}</option>

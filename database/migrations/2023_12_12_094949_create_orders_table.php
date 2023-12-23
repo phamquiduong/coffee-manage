@@ -22,6 +22,7 @@ return new class extends Migration {
             $table->foreign('user_phone_number')->references('phone_number')->on('my_users');
             $table->foreign('food_id')->references('id')->on('foods');
         });
+
     }
 
     /**

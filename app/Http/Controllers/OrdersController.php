@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Food;
+use App\Models\FoodGroup;
 use Illuminate\Http\Request;
 use App\Models\MyUser;
+use App\Models\Order;
 
 class OrdersController extends Controller
 {
@@ -17,11 +20,10 @@ class OrdersController extends Controller
         if (isset($account)) {
             $user = MyUser::where('phone_number', $account)->first();
             if ($user->role != 'owner') return redirect('/');
-           
         }
+        
         return view('owner.orders');
     }
-
     /**
      * Show the form for creating a new resource.
      */
