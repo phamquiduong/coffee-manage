@@ -29,6 +29,9 @@ Owner page
     <button type="button" onclick="submit_food()" class="btn btn-primary float-end">
         Đặt món
     </button>
+    <div>
+        <a class="btn btn-secondary" href="/">Trang trước</a>
+    </div>
 </form>
 
 @endsection
