@@ -39,7 +39,7 @@ class StaffController extends Controller
                     'quantity' => $number
                 ]);
             }
-            return view('staff.ordered', ['money' => $money]);
+            return view('staff.ordered', ['money' => $money, 'order' => $order]);
         }
         return redirect('/staff/order');
     }
