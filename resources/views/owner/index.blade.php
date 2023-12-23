@@ -18,7 +18,7 @@ Owner page
 
     <!-- Feature Section -->
     <div class="feature mt-5">
-        <div class="container">
+        <div class="container bg-body">
             <div class="row text-center">
                 <div class="col-md-4 bg-body ps-5 pe-5">
                     <img src="/images/f1.png" alt="Feature 1" class="w-h-100 rounded">
