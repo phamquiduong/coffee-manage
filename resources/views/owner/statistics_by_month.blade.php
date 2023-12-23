@@ -9,9 +9,6 @@ Owner page
 @include('owner.layouts.navigation', ['page'=>'orders'])
 <ul class="nav nav-tabs">
     <li class="nav-item">
-        <a class="nav-link" aria-current="page" href="/">Trang chủ</a>
-    </li>
-    <li class="nav-item">
         <a class="nav-link " href="/orders">Danh sách</a>
     </li>
     <li class="nav-item">
